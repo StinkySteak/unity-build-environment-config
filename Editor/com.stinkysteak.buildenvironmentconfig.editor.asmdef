@@ -1,0 +1,18 @@
+{
+    "name": "com.stinkysteak.buildenvironmentconfig.editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:671db0cb24d048e43818a876a90d3037"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

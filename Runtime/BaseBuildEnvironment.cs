@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StinkySteak.BuildEnvironmentConfig.Editor
+namespace StinkySteak.BuildEnvironmentConfig
 {
     /// <summary>
     /// Environment target metadata

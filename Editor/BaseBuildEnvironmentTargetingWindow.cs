@@ -10,7 +10,7 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
     /// 1. Script Define Symbols <br/>
     /// 2. Environment build
     /// </summary>
-    public class BaseBuildEnvironmentConfigWindow : EditorWindow
+    public class BaseBuildEnvironmentConfigWindow : UnityEditor.EditorWindow
     {
         private BuildTargetGroup _platformTarget;
         private int _environmentIndex;
@@ -18,7 +18,7 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
         public virtual string[] SYMBOLS => new string[] { };
 
         protected virtual string ENVIRONMENT_DATA_CONTAINER_PATH => string.Empty;
-        public const string MENU_ITEM_PATH = "Tools/Set Release Target";
+        public const string MENU_ITEM_PATH = BuildEnvironmentDataContainer.MENU_ITEM_PATH;
 
 
         private void OnGUI()
