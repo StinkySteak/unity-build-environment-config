@@ -10,7 +10,7 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
     /// 1. Script Define Symbols <br/>
     /// 2. Environment build
     /// </summary>
-    public class BaseBuildEnvironmentConfigWindow : UnityEditor.EditorWindow
+    public class BaseBuildEnvironmentConfigWindow : EditorWindow
     {
         private BuildTargetGroup _platformTarget;
         private int _environmentIndex;
@@ -18,7 +18,7 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
         public virtual string[] SYMBOLS => new string[] { };
 
         protected virtual string ENVIRONMENT_DATA_CONTAINER_PATH => string.Empty;
-        public const string MENU_ITEM_PATH = BuildEnvironmentDataContainer.MENU_ITEM_PATH;
+        public const string MENU_ITEM_PATH = BaseBuildEnvironmentDataContainer.MENU_ITEM_PATH;
 
 
         private void OnGUI()
@@ -58,7 +58,7 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
             return true;
         }
 
-        private BuildEnvironmentDataContainer GetPlatformEnvirontmentDataContainer()
+        private BaseBuildEnvironmentDataContainer GetPlatformEnvirontmentDataContainer()
         {
             if (string.IsNullOrEmpty(ENVIRONMENT_DATA_CONTAINER_PATH))
             {
@@ -73,9 +73,9 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
             foreach (string guid in guids)
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
-                object obj = AssetDatabase.LoadAssetAtPath(path, typeof(BuildEnvironmentDataContainer));
+                object obj = AssetDatabase.LoadAssetAtPath(path, typeof(BaseBuildEnvironmentDataContainer));
 
-                if (obj is BuildEnvironmentDataContainer container)
+                if (obj is BaseBuildEnvironmentDataContainer container)
                 {
                     return container;
                 }
@@ -87,7 +87,7 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
 
         protected BaseBuildEnvironment GetPlatformEnvironment(int environmentIndex)
         {
-            BuildEnvironmentDataContainer container = GetPlatformEnvirontmentDataContainer();
+            BaseBuildEnvironmentDataContainer container = GetPlatformEnvirontmentDataContainer();
 
             return container.GetEnvironmentData(environmentIndex);
         }

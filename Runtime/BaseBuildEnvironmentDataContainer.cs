@@ -2,8 +2,10 @@ using UnityEngine;
 
 namespace StinkySteak.BuildEnvironmentConfig.Editor
 {
-    [CreateAssetMenu(fileName = nameof(BuildEnvironmentDataContainer), menuName = "Data/Platform Environment/Container")]
-    public class BuildEnvironmentDataContainer : ScriptableObject
+    /// <summary>
+    /// Data Container for storing multiple <see cref="BaseBuildEnvironment"/> to EditorWindow to scan
+    /// </summary>
+    public class BaseBuildEnvironmentDataContainer : ScriptableObject
     {
         [SerializeField] private BaseBuildEnvironment[] _environments;
 
@@ -17,7 +19,7 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
         public BaseBuildEnvironment[] Datas => _environments;
 
 #if UNITY_EDITOR
-        private void OpenMenu()
+        protected void OpenMenu()
         {
             UnityEditor.EditorApplication.ExecuteMenuItem(MENU_ITEM_PATH);
         }
