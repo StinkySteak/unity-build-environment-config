@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StinkySteak.BuildEnvironmentConfig.Editor
+namespace StinkySteak.BuildEnvironmentConfig
 {
     /// <summary>
     /// Data Container for storing multiple <see cref="BaseBuildEnvironment"/> to EditorWindow to scan
