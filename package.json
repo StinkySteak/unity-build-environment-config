@@ -1,15 +1,15 @@
 {
-    "name": "com.stinkysteak.build-environment-config",
-    "version": "0.1.1",
-    "displayName": "Build Environment Config",
-    "description": "Module to manage your unity project environment",
-    "unity": "2021.3",
-    "documentationUrl": "https://github.com/StinkySteak/build-environment-config",
-    "changelogUrl": "https://github.com/StinkySteak/build-environment-config/blob/main/CHANGELOG.md",
-    "licensesUrl": "https://github.com/StinkySteak/build-environment-config/blob/main/LICENSE",
-    "author": {
-      "name": "Stinkysteak",
-      "email": "stinkysteak@steaksoft.com",
-      "url": "https://steaksoft.net"
-    }
+  "name": "com.stinkysteak.build-environment-config",
+  "version": "0.1.2",
+  "displayName": "Build Environment Config",
+  "description": "Module to manage your unity project environment",
+  "unity": "2021.3",
+  "documentationUrl": "https://github.com/StinkySteak/build-environment-config",
+  "changelogUrl": "https://github.com/StinkySteak/build-environment-config/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/StinkySteak/build-environment-config/blob/main/LICENSE",
+  "author": {
+    "name": "Stinkysteak",
+    "email": "stinkysteak@steaksoft.com",
+    "url": "https://steaksoft.net"
   }
+}

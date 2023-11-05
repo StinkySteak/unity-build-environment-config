@@ -18,11 +18,15 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
 
         public BaseBuildEnvironment[] Datas => _environments;
 
-#if UNITY_EDITOR
-        protected void OpenMenu()
+        /// <summary>
+        /// Override this and add a your custom EditorButton to open up <see cref="MENU_ITEM_PATH"/> window quickly
+        /// </summary>
+        protected virtual void OpenMenu()
         {
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.ExecuteMenuItem(MENU_ITEM_PATH);
-        }
 #endif
+        }
+
     }
 }
