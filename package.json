@@ -1,6 +1,6 @@
 {
   "name": "com.stinkysteak.build-environment-config",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "displayName": "Build Environment Config",
   "description": "Module to manage your unity project environment",
   "unity": "2021.3",
