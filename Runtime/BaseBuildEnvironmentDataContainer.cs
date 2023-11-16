@@ -7,7 +7,7 @@ namespace StinkySteak.BuildEnvironmentConfig
     /// </summary>
     public class BaseBuildEnvironmentDataContainer : ScriptableObject
     {
-        [SerializeField] private BaseBuildEnvironment[] _environments;
+        [SerializeField] protected BaseBuildEnvironment[] _environments;
 
         public const string MENU_ITEM_PATH = "Tools/Set Release Target";
 
