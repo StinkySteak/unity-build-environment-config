@@ -75,12 +75,12 @@ public static void SetGameBuild()
 ```
 
 1. All the class has been setup, now lets try it up by going to create our environment data containe by right clicking on Project Folder, Data > Platform Environment > Container
-![Data Creation](Docs\docs_datacreation.png)
+![Data Creation](Docs/docs_datacreation.png)
 
 1. Now also create the data by going to Data > Platform Environment > Data
 
 1. Now add the data to the Platform Environment array
-![Window](Docs\docs_window.png)
+![Window](Docs/docs_window.png)
 
 1. To test it out, head over to Tools > Set Release Target (Make sure your `PlatformDataContainer` is in the correct path!)
 
