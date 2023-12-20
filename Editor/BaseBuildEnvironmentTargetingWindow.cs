@@ -36,7 +36,7 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
                 nameList.Add(data.Title);
             }
 
-            _environmentIndex = EditorGUILayout.IntPopup("Environtment", _environmentIndex, nameList.ToArray(), intList.ToArray());
+            _environmentIndex = EditorGUILayout.IntPopup("Environment", _environmentIndex, nameList.ToArray(), intList.ToArray());
             _platformTarget = (BuildTargetGroup)EditorGUILayout.EnumPopup("Platform Target", _platformTarget);
 
             if (GUILayout.Button("Set Release Target"))
