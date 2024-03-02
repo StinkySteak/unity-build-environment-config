@@ -25,6 +25,18 @@ a Unity package to manage multiple environments with ease
     }
 ```
 
+1. Go create the container for our environments, so we can register the available environments for our project.
+```cs
+    
+    [CreateAssetMenu(fileName = "BuildEnvironmentContainer", menuName = "Data/Platform Environment/Container")]
+public class BuildEnvironmentContainer : BaseBuildEnvironmentDataContainer
+{
+        // Leave it empty
+        // If you have a [Button] custom editor e.g Odin Inspector or Naughty Attributes
+        // You can override OpenMenu() and add the [Button] attribute for shortcuts opening the editor menu later on 
+}
+```
+
 
 1. Now Let's Create the a editor window that we can use to toggle the environment. Create a class derives from `BaseBuildEnvironmentConfigWindow`
 
