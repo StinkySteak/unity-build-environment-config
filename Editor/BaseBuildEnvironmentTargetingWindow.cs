@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
+using UnityEditor.Build;
 
 namespace StinkySteak.BuildEnvironmentConfig.Editor
 {
@@ -13,6 +14,7 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
     public class BaseBuildEnvironmentConfigWindow : EditorWindow
     {
         private BuildTargetGroup _platformTarget;
+        private bool _isServer;
         private int _environmentIndex;
 
         public virtual string[] SYMBOLS => new string[] { };
@@ -38,6 +40,9 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
 
             _environmentIndex = EditorGUILayout.IntPopup("Environment", _environmentIndex, nameList.ToArray(), intList.ToArray());
             _platformTarget = (BuildTargetGroup)EditorGUILayout.EnumPopup("Platform Target", _platformTarget);
+
+            if (_platformTarget == BuildTargetGroup.Standalone)
+                _isServer = EditorGUILayout.Toggle("Is Server?", _isServer);
 
             if (GUILayout.Button("Set Release Target"))
             {
@@ -101,7 +106,17 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
         {
             BaseBuildEnvironment environment = GetPlatformEnvironment(_environmentIndex);
 
-            PlayerSettings.GetScriptingDefineSymbolsForGroup(_platformTarget, out string[] symbols);
+            NamedBuildTarget buildTarget = NamedBuildTarget.FromBuildTargetGroup(_platformTarget);
+            PlayerSettings.GetScriptingDefineSymbols(buildTarget, out string[] symbols);
+
+            bool isStandalone = _platformTarget == BuildTargetGroup.Standalone;
+
+            if (isStandalone && _isServer)
+            {
+                buildTarget = NamedBuildTarget.Server;
+            }
+
+            EditorUserBuildSettings.standaloneBuildSubtarget = StandaloneBuildSubtarget.Player;
 
             List<string> symbolList = symbols.ToList();
 
@@ -110,10 +125,16 @@ namespace StinkySteak.BuildEnvironmentConfig.Editor
 
             UpdateList(environment, symbolList);
 
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(_platformTarget, symbolList.ToArray());
+            PlayerSettings.SetScriptingDefineSymbols(buildTarget, symbolList.ToArray());
             Unity.CodeEditor.CodeEditor.Editor.CurrentCodeEditor.SyncAll();
 
-            Debug.Log($"[GameBuildTargeting]: Release Target has been set to: {environment.Title} for platform: {_platformTarget}");
+            if (!_isServer)
+            {
+                Debug.Log($"[GameBuildTargeting]: Release Target has been set to: {environment.Title} for platform: {_platformTarget}");
+                return;
+            }
+
+            Debug.Log($"[GameBuildTargeting]: Release Target has been set to: {environment.Title} for platform: {_platformTarget} with server subtarget");
         }
 
         private void TryRemove(List<string> symbolList, string defineSymbol)
